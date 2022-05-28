@@ -1,9 +1,0 @@
-.deposit-box, .deposit-container {
-    display: -webkit-flex;
-    display: flex;
-}
-.deposit-container {
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-left: 17px;
-}
