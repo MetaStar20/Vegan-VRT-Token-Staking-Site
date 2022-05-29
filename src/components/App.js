@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button,  Card, Row, Form, Tab, Col, Nav, ButtonGroup, Navbar} from 'react-bootstrap';
+import { Button,  Card, Row, Form, Tab, Col, Nav, ButtonGroup, Navbar, InputGroup, FormControl} from 'react-bootstrap';
 import { MDBDataTableV5 } from 'mdbreact';
 import Web3 from 'web3';
 import './App.css';
@@ -21,23 +21,11 @@ class App extends Component {
     this.state={
       // DASH BOARD
       linkedAccount : '',
-      accountType : '',
-      totalSupply : '0',
-      holders     : [],
-      owner       : '',
-      holderTable : [],
-
-      // ELECTION STATUS
-      electionNumber : 0,
-      OpenedNumberElection : 0,
-      EndedNumberElection : 0,
-      electionTable : [],
-
-      // create Election
-      attachment    : [],
-      electionContent : '',
-      // Vote Table
-      voteTable : []
+      firstStakeAmount : 0,
+      secondStakeAmount : 0,
+      thirdStakeAmount : 0,
+      fourthStakeAmount : 0,
+      fifthStakeAmount : 0,
     }
   }
 
@@ -107,6 +95,39 @@ class App extends Component {
 
  
   render() {
+
+    const firstHandleAmount =  (e) => {
+      let addLabel  = e.target.value
+      this.setState({
+        walletAddress : addLabel
+      }) 
+    }
+    const secondHandleAmount =  (e) => {
+      let addLabel  = e.target.value
+      this.setState({
+        walletAddress : addLabel
+      }) 
+    }
+    const thirdHandleAmount =  (e) => {
+      let addLabel  = e.target.value
+      this.setState({
+        walletAddress : addLabel
+      }) 
+    }
+    const fourthHandleAmount =  (e) => {
+      let addLabel  = e.target.value
+      this.setState({
+        walletAddress : addLabel
+      }) 
+    }
+    const fifthHandleAmount =  (e) => {
+      let addLabel  = e.target.value
+      this.setState({
+        walletAddress : addLabel
+      }) 
+    }
+
+
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-primary" 
@@ -144,55 +165,77 @@ class App extends Component {
             <div className = "row">
               <div className='col-1'/>          
               <div className='col-2'>
-                <Card bg = "light">
-                  <Card.Header  bg = "dark" > <h6>Option 1</h6></Card.Header>
+                <Card border="primary">
+                  <Card.Header > <h6>Option 1</h6></Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      {this.state.totalSupply}
+                      <p>15 days / 1% ROI</p>
                     </Card.Text>
+                    <InputGroup className="mb-3">
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" defaultValue = {this.state.firstStakeAmount} onChange={firstHandleAmount} />
+                    </InputGroup>
+                    <Button className='depositButton'  variant="success" onClick={()=>this.stake(1, this.state.firstStakeAmount)}>Deposit</Button>
                   </Card.Body>
                 </Card>
               </div>
               <div className='col-2'>
-                <Card bg = "light">
-                  <Card.Header  bg = "dark" > <h6>Option 2</h6></Card.Header>
+                <Card border="primary">
+                  <Card.Header > <h6>Option 2</h6></Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      {this.state.holders.length}
+                      <p>30 days / 2% ROI</p>
                     </Card.Text>
+                    <InputGroup className="mb-3">
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" defaultValue = {this.state.secondStakeAmount} onChange={secondHandleAmount} />
+                    </InputGroup>
+                    <Button className='depositButton'  variant="success" onClick={()=>this.stake(2, this.state.secondStakeAmount)}>Deposit</Button>
                   </Card.Body>
                 </Card>
               </div>
               <div className='col-2'>
-                <Card bg = "light">
-                  <Card.Header  bg = "dark" > <h6>Option 3</h6></Card.Header>
+                <Card border="primary">
+                  <Card.Header > <h6>Option 3</h6></Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      {this.state.owner}
+                      <p>90 days / 9% ROI</p>
                     </Card.Text>
+                    <InputGroup className="mb-3">
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" defaultValue = {this.state.thirdStakeAmount} onChange={thirdHandleAmount} />
+                    </InputGroup>
+                    <Button className='depositButton'  variant="success" onClick={()=>this.stake(3, this.state.thirdStakeAmount)}>Deposit</Button>
                   </Card.Body>
                 </Card>
               </div>
               <div className='col-2'>
-                <Card bg = "light">
-                  <Card.Header  bg = "dark" > <h6>Option 4</h6></Card.Header>
+                <Card border="primary">
+                  <Card.Header > <h6>Option 4</h6></Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      {this.state.owner}
+                      <p>180 days / 20% ROI</p>
                     </Card.Text>
+                    <InputGroup className="mb-3">
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" defaultValue = {this.state.fourthStakeAmount} onChange={fourthHandleAmount} />
+                    </InputGroup>
+                    <Button className='depositButton'  variant="success" onClick={()=>this.stake(4, this.state.fourthStakeAmount)}>Deposit</Button>
                   </Card.Body>
                 </Card>
               </div>
               <div className='col-2'>
-                <Card bg = "light">
-                  <Card.Header  bg = "dark" > <h6>Option 5</h6></Card.Header>
+                <Card border="primary">
+                  <Card.Header > <h6>Option 5</h6></Card.Header>
                   <Card.Body>
                     <Card.Text>
-                      {this.state.owner}
+                      <p>365 days / 50% ROI</p>
                     </Card.Text>
+                    <InputGroup className="mb-3">
+                        <FormControl id="basic-url" aria-describedby="basic-addon3" defaultValue = {this.state.fifthStakeAmount} onChange={fifthHandleAmount} />
+                    </InputGroup>
+                    <Button className='depositButton'  variant="success" onClick={()=>this.stake(5, this.state.fifthStakeAmount)}>Deposit</Button>
                   </Card.Body>
                 </Card>
               </div>
+
+
               <div className='col-1'/>
             </div><br/><br/><br/><br/>
             <h3>Withdraw</h3><hr/>
